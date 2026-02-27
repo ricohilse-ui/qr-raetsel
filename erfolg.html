@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Erfolg!</title>
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; }
+</style>
+</head>
+<body>
+
+<h2>🎉 Glückwunsch! Du hast das Rätsel gelöst!</h2>
+<p>Bisher haben <span id="count">...</span> Personen es geschafft.</p>
+
+<script>
+// Counter erhöhen + anzeigen
+fetch("https://api.countapi.xyz/hit/starfun007/raetselcounter")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("count").innerText = data.value;
+  });
+</script>
+
+</body>
+</html>
