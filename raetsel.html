@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Rätsel-Challenge</title>
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; }
+input { padding: 10px; width: 250px; max-width: 100%; }
+button { padding: 10px 15px; margin-left: 5px; }
+#feedback { margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<h2>Knacke das Rätsel!</h2>
+<p id="frage"></p>
+
+<input id="antwort" placeholder="Deine Antwort">
+<button onclick="check()">Prüfen</button>
+
+<p id="feedback" style="color:red;"></p>
+
+<script>
+// Deine drei Rätsel
+const raetsel = [
+  { 
+    frage: "Ich folge dir überall hin, aber du kannst mich niemals berühren. Ich erscheine nur, wenn Licht da ist, und verschwinde in der Dunkelheit. Was bin ich?", 
+    loesung: "schatten" 
+  },
+  { 
+    frage: "Ich nehme dir jeden Tag etwas weg, aber du merkst es kaum. Was bin ich?", 
+    loesung: "zeit" 
+  },
+  { 
+    frage: "Ich habe eine Krone, aber bin kein König. Ich habe Wurzeln, aber bin keine Pflanze. Was bin ich?", 
+    loesung: "zahn" 
+  }
+];
+
+// Zufälliges Rätsel auswählen
+const r = raetsel[Math.floor(Math.random() * raetsel.length)];
+document.getElementById("frage").innerText = r.frage;
+
+function check() {
+  const a = document.getElementById("antwort").value.toLowerCase().trim();
+
+  const korrekt = [
+    r.loesung,
+    "ein " + r.loesung,
+    "der " + r.loesung,
+    "die " + r.loesung
+  ];
+
+  if (korrekt.includes(a)) {
+    window.location.href = "erfolg.html";
+  } else {
+    document.getElementById("feedback").innerText = "Leider falsch. Versuch's nochmal!";
+  }
+}
+</script>
+
+</body>
+</html>
